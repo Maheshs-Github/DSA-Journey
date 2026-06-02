@@ -42,7 +42,7 @@
 import java.util.Arrays;
 
 public class Sort012 {
-    public void sort1(int[] a) {
+    public int[] sort1(int[] a) {
         // int zeroCnt=0,oneCnt=0,twoCnt=0;
         // for (int i = 0; i < a.length; i++) {
         // if(a[i]==0)
@@ -68,43 +68,99 @@ public class Sort012 {
 
         // Let's see the Optimized Approach , Dutch national flag algorithm
 
-        int low = 0;
-        int mid = 0;
-        int high = a.length - 1;
+    //     int low = 0;
+    //     int mid = 0;
+    //     int high = a.length - 1;
 
-        while (mid <= high) {
+    //     while (mid <= high) {
 
-            if (a[mid] == 0) {
+    //         if (a[mid] == 0) {
 
-                int temp = a[mid];
-                a[mid] = a[low];
-                a[low] = temp;
+    //             int temp = a[mid];
+    //             a[mid] = a[low];
+    //             a[low] = temp;
 
-                low++;
-                mid++;
-            }
+    //             low++;
+    //             mid++;
+    //         }
 
-            else if (a[mid] == 1) {
+    //         else if (a[mid] == 1) {
 
-                mid++;
-            }
+    //             mid++;
+    //         }
 
-            else {
+    //         else {
 
-                int temp = a[mid];
-                a[mid] = a[high];
-                a[high] = temp;
+    //             int temp = a[mid];
+    //             a[mid] = a[high];
+    //             a[high] = temp;
 
-                high--;
-            }
+    //             high--;
+    //         }
+    //     }
+
+
+
+
+
+    // Let's do the Revison
+    // int[] ans=new int[a.length]    ;
+    // int zeroCnt=0,oneCnt=0,twoCnt=0,no=0;
+    // for (int i = 0; i < a.length; i++) {
+    //     if(a[i]==0)
+    //         zeroCnt++;
+    //             if(a[i]==1)
+    //         oneCnt++;
+    //             if(a[i]==2)
+    //         twoCnt++;
+    // }
+    // while (zeroCnt>0) {
+    //     ans[no++]=0;
+    //     zeroCnt--;
+    //     System.out.println("no: "+no+" Ans: " + Arrays.toString(ans));
+    // }
+    //     while (oneCnt>0) {
+    //     ans[no++]=1;
+    //     oneCnt--;
+    //     System.out.println("no: "+no+" Ans: " + Arrays.toString(ans));
+    // }
+    //     while (twoCnt>0) {
+    //     ans[no++]=2;
+    //     twoCnt--;
+    //     System.out.println("no: "+no+" Ans: " + Arrays.toString(ans));
+    // }
+    // return ans;
+
+    // }
+
+    // let's see with the optimal apprach which uses te 2 pointer
+    int low=0,mid=0,high=a.length-1;
+    while (mid<=high) {
+        if(a[mid]==0){
+            int temp=a[low];
+            a[low]=a[mid];
+            a[mid]=temp;
+            low++;
+            mid++;
         }
+        else if(a[mid]==1)
+            mid++;
+        else{
+            int temp=a[high];
+            a[high]=a[mid];
+            a[mid]=temp;
+            high--;
+        }
+    System.out.println("low: "+low+ " mid "+ mid+" high: "+high+ " Ans: " + Arrays.toString(a));
+    }
+    System.out.println("Ans: " + Arrays.toString(a));
+    return a;
 
     }
-
     public static void main(String[] args) {
         Sort012 s = new Sort012();
         int[] a = { 0, 2, 1, 0, 2, 1, 0 };
-        s.sort1(a);
-        System.out.println("Ans: " + Arrays.toString(a));
+        int [] ans=s.sort1(a);
+        System.out.println("Ans: " + Arrays.toString(ans));
     }
 }

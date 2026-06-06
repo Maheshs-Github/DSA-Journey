@@ -63,18 +63,40 @@ public class KadanesAlgo {
     // return maxSum;
     return a1;
   }
+
+
+  // Let's revise the kadanes algorithm
+  // public int[] maximumSubArraySum(int[] a){
+  // public int maximumSubArraySum(int[] a){
+  //   int left=0,right=0,sum=0,maxSum=Integer.MIN_VALUE;
+  //   for (int i = 0; i < a.length; i++) {
+  //     if(a[i]>a[i]+sum){
+  //       sum=a[i];
+  //       // left=i;
+  //     }
+  //     else{
+  //       sum+=a[i];
+  //     }
+  //     System.out.println("Sum: "+sum);
+  //     sum+=a[i];
+  //     if(sum>maxSum)
+  //       maxSum=sum;
+  //   }
+  //   return maxSum;
+  // }
   public static void main(String[] args) {
     KadanesAlgo k=new KadanesAlgo();
-    int[] a={1,2,3,4};
+    // int[] a={1,2,3,4};
     // 10
-    // int[] a={-1,-2,-3,-4};
+    int[] a={-1,-2,-3,-4};
     // int[] a={100,-101,200,100,400,-10};
     // int ans=k.maximumSubArraySum(a);
     // System.out.println("Ans: "+ans);
 
     ArrayList<Integer> a1=new ArrayList<>();
         a1=k.maximumSubArraySum(a);
-    System.out.println("Ans: "+a1);
+        // int ans=k.maximumSubArraySum(a);
+    // System.out.println("Ans: "+ans);
   }
 }
 

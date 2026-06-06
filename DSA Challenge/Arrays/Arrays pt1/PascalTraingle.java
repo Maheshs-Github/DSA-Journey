@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class PascalTraingle {
-  public void triangle(int n){
+  // public void triangle(int n){
+  public List<List<Integer>> triangle(int n){
 
     // wrong approch
     // int n1=0,n2=n-1;
@@ -26,29 +28,51 @@ public class PascalTraingle {
 
 
     // let's see with the apprach where we use the prevoius value to get new and add 1, 1 at both end 
-    ArrayList<Integer> aP=new ArrayList<>();
-    ArrayList<Integer> aN=new ArrayList<>();
-    for (int i = 0; i <=n; i++) {
-      // int[] prevA=new int[]
-      if(i==0)
-      {
-        aP.add(1);
-        continue;
-      }
-      aN.addFirst(1);
-      for (int j = 0; j <i+1; j++) {
-        aN.add(j+1, aP.get(j)+aP.get(j+1));
-      }
-      aN.addLast(1);
-      aP.addAll(aN);
-      System.out.print(" "+aP);
+  //   ArrayList<Integer> aP=new ArrayList<>();
+  //   aP.add(1);
+  //   System.out.println(aP);
+  //   for (int i = 1; i <=n; i++) {
+  //     ArrayList<Integer> aN=new ArrayList<>();
+  //     aN.add(1);
+  //     for (int j = 0; j <aP.size()-1; j++) {
+  //       aN.add(aP.get(j)+aP.get(j+1));
+  //     }
+  //     aN.add(1);
+  //     // aP.addAll(aN);
+  //     System.out.println(""+aN);
+  //     aP=aN;
+  //   }
+  // }
+
+
+  // 
+  // okay let me do the pascale traingle with 2 arrays (revision)
+  List<List<Integer>> ans=new ArrayList<>();
+  ArrayList<Integer> previous=new ArrayList<>();
+  previous.add(1);
+    ans.add(previous);
+  // System.out.println(previous);
+  for (int i = 0; i <n; i++) {
+    ArrayList<Integer> current=new ArrayList<>();
+    current.add(1);
+    for (int j = 0; j < previous.size()-1; j++) {                                                                                                                                                                
+      current.add(previous.get(j)+ previous.get(j+1));
     }
+    current.add(1);
+    // System.out.println(current);
+    ans.add(current);
+    previous=current;          
+    // return ans;
+    System.out.println(ans);
   }
-    //   public int fact(int no){
-    //   if(no==0)
-    //     return 1;
-    //   return no * fact(no-1);
-    // }
+  return ans;
+}
+
+      public int fact(int no){
+      if(no==0)
+        return 1;
+      return no * fact(no-1);
+    }
 
   public static void main(String[] args) {
     PascalTraingle p=new PascalTraingle();

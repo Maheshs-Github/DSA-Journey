@@ -55,33 +55,60 @@ public class LongestSubArrayOfSum {
 
     // optimal approach 
     // it is a sliding window and 2 pointer approch let's see how we cando it 
-    int left=0,right=0,maxLen=0;
-    int sum=0;
-    while(right < a.length){
+//     int left=0,right=0,maxLen=0;
+//     int sum=0;
+//     while(right < a.length){
 
-    sum += a[right];
+//     sum += a[right];
 
-    while(sum > k){
-        sum -= a[left];
-        left++;
-    }
+//     while(sum > k){
+//         sum -= a[left];
+//         left++;
+//     }
 
-    if(sum == k && maxLen<right-left+1){
-        // maxLen = Math.max(maxLen, right-left+1);
-        maxLen=right-left+1;
-    }
+//     if(sum == k && maxLen<right-left+1){
+//         // maxLen = Math.max(maxLen, right-left+1);
+//         maxLen=right-left+1;
+//     }
 
-    right++;
+//     right++;
+// }
+//     return maxLen;
+
+
+// 
+// REVISION
+int sum=0,left=0,right=0, maxLen=0,len=0;
+while(right<a.length){
+  System.out.println("sum: "+sum+" a[right]: "+a[right]);
+  if(sum>=k){
+    sum-=a[left];
+    len-=1;
+  left++;
 }
-    return maxLen;
+if(sum==k){
+  maxLen=len;
+
+}
+  if(sum<k){
+    sum+=a[right];
+    len+=1;
+    if(maxLen<len)
+    right++;
+  }
+
+}
+return maxLen;
   }
   public static void main(String[] args) {
     LongestSubArrayOfSum l=new LongestSubArrayOfSum();
     // int[] a={10, 5, 2,-2,2, 7, 1, 9};
     // int[] a={1, 2, -1, 1, 1};
         // int[] a={2, -1, 2, 3};
+    // int ans=l.longSub(a,3);
             int[] a={1, -1, 5, -2, 3};
     int ans=l.longSub(a,4);
+    // int ans=l.longSub(a,15); 
     System.out.println("Ans: "+ans);
   }  
 }

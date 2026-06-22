@@ -1,2 +1,6 @@
 1. Let's see about the psvm meanning ?
 2. old java notes 
+
+
+-Where to start from next
+1. Longest SubArray question for revsion , alos check the medimum revsion and starte with the new medium question , start fron theer  

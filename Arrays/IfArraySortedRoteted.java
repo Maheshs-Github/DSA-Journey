@@ -174,28 +174,48 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class IfArraySortedRoteted {
-  public boolean isSorted(ArrayList<Integer> a)
-  {
+  // public boolean isSorted(ArrayList<Integer> a)
+  // {
+  //   int count=0;
+  //   for(int i=1;i<a.size();i++){
+  //   // for(int i=1;i<a.lenght;i++){
+  //     // if(a[i-1] > a[i]){
+  //     if(a.get(i-1) > a.get(i)){
+  //       count++;
+  //     }
+  //   }
+  //   if(a.get(a.size()-1)>a.get(0)){
+  //     count++;
+  //   }
+  //   return count<=1;
+  // }
+
+  // 
+  // REVISION , Simply if the next elemnst is greatere  than the previous then it is SORTED
+  // also if Roatated if the a[n] is less than the  a[0], bcoz u know it is rotated ,
+  //  but there is 1 consition too i thought count will be always 0, u know sorted should be like a[i]<a[i+1]
+  // but for example [4,5,1,2,3], 5>1 then taht is why we have the return with count<=1, damnn 
+  public static boolean isSortedRotated(int [] a){
     int count=0;
-    for(int i=1;i<a.size();i++){
-    // for(int i=1;i<a.lenght;i++){
-      // if(a[i-1] > a[i]){
-      if(a.get(i-1) > a.get(i)){
-        count++;
-      }
+    for (int i = 0; i < a.length-1; i++) {
+      if(a[i+1]<a[i])
+        count+=1;
     }
-    if(a.get(a.size()-1)>a.get(0)){
-      count++;
-    }
-    return count<=1;
+    if(a[a.length-1]>a[0])
+      count+=1;
+
+    System.out.println("count: "+count);
+    return count <=1;
   }
+
   public static void main(String[] args) {
     IfArraySortedRoteted s=new IfArraySortedRoteted();
-    // int[] a={1,2,3,4,5};
-    ArrayList<Integer> al=new ArrayList<>(Arrays.asList(4,5,1, 2, 3));
+    int[] a={4,5,1, 2, 3};
+    // ArrayList<Integer> al=new ArrayList<>(Arrays.asList(4,5,1, 2, 3));
     // al.add(a);
     // boolean ans=s.isSorted(a);
-    boolean ans=s.isSorted(al);
+    // boolean ans=s.isSorted(al);
+    boolean ans=isSortedRotated(a);
     System.out.println("ans: "+ans);
   }
 }

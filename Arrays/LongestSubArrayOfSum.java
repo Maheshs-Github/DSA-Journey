@@ -80,44 +80,48 @@ public class LongestSubArrayOfSum {
 
 // 
 // REVISION, this is sliding window apprch but it's onlay works for the positive ones , why sliding window is not working on -ve 
-// int sum=0,left=0,right=0, maxLen=0;
-// while(right<a.length){
-//   // System.out.println("sum: "+sum+" a[right]: "+a[right]);
-//   // System.out.println("maxLen: "+maxLen);
-//   sum+=a[right];
+int sum=0,left=0,right=0, maxLen=0;
+while(right<a.length){
+  System.out.println("sum: "+sum+" a[right]: "+a[right]);
+  System.out.println("maxLen: "+maxLen);
+  sum+=a[right];
 
-// if(sum==k){
-//   if(maxLen<right-left+1)
-//     maxLen=right-left+1;
-// }
-//   if(sum>=k){
-//     sum-=a[left];
-//     left++;
-// }
+if(sum==k){
+  if(maxLen<right-left+1)
+    maxLen=right-left+1;
+}
+  if(sum>=k){
+    sum-=a[left];
+    left++;
+}
 
 
-//     right++;
+    right++;
   
 
-// }
-// return maxLen;
+}
+return maxLen;
 
 
 // Let's see the one whioch can work for the +ve as well as -ve numbers 
-HashMap<Integer,Integer> h=new HashMap<>();
-int sum=0,maxLen=0;
-for (int i = 0; i < a.length; i++) {
-  sum+=a[i];
-  if(sum==k && maxLen<i+1){
-      maxLen=i+1;
-  }
-  if(sum-k==k && h.containsKey(sum-k)){
-      if(maxLen<(i-h.get(sum-k))+1)
-      maxLen=(i-h.get(sum-k))+1;
-  }
-  h.put(sum,i);
-}
-return maxLen;
+// HashMap<Integer,Integer> h=new HashMap<>();
+// int sum=0,maxLen=0;
+// for (int i = 0; i < a.length; i++) {
+//   sum+=a[i];
+//   if(sum==k && maxLen<i+1){
+//       maxLen=i+1;
+//   }
+//   System.out.println("a[i]: "+a[i]+" sum: "+sum+" sum-k: "+(sum-k)+" maxLen: "+maxLen);
+//   if( h.containsKey(sum-k)){
+//       if(maxLen<(i-h.get(sum-k))+1)
+//       maxLen=(i-h.get(sum-k))+1;
+//   }
+//   h.put(sum,i);
+//   for (Integer key : h.keySet()) {
+//     System.out.println("key: "+key+" value: "+h.get(key));
+//   }
+// }
+// return maxLen;
 
   }
   public static void main(String[] args) {
@@ -125,8 +129,8 @@ return maxLen;
     // int[] a={10, 5, 2, 7, 1, 9};
     // int[] a={1, 2, -1, 1, 1};
         // int[] a={2, -1, 2, 3};
-    // int ans=l.longSub(a,3);
-            // int[] a={1, -1, 5, -2, 3};
+    // int ans=l.longSub(a,15);
+    //         int[] a={1, -1, 5, -2, 3};
     // int ans=l.longSub(a,4);
 
     // ?Let's do some +ve examples 
@@ -134,9 +138,15 @@ return maxLen;
     // int k = 3;
 //     int[] a = {2, 1, 1, 1, 2, 1};
 // int k = 4;
-int[] a = {1, 2, 3, 1, 1, 1, 1};
-int k = 6;
+// int[] a = {1, 2, 3, 1, 1, 1, 1};
+// int k = 6;
+//     int ans=l.longSub(a,k); 
+
+// for -ve case 
+int[] a = {1, -1, 5, -2, 3};
+int k = 3;
     int ans=l.longSub(a,k); 
+
     System.out.println("Ans: "+ans);
   }  
 }

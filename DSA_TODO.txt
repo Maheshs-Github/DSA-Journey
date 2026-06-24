@@ -1,5 +1,6 @@
 1. Let's see about the psvm meanning ?
 2. old java notes 
+okay  let's understand what is the package 
 
 
 -Where to start from next

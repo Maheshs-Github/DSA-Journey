@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NextPermutation {
-  public static void  findGreaterNextPermutation(int[] a) {
+  public static void findGreaterNextPermutation(int[] a) {
 
     // let's first find all the permutaion, for 3 digits only
     // System.out.println("2%4: " + (3 % 4));
@@ -69,59 +69,110 @@ public class NextPermutation {
 
     //
     // Let's see with teh simple code by chatGpt idea
+    // int pivot = -1;
+    // for (int i = a.length - 2; i >= 0; i--) {
+    // System.out.println("i: "+i);
+    // if (a[i] < a[i + 1]) {
+    // System.out.println("Imf for i: "+i);
+    // pivot = i;
+    // break;
+    // }
+    // }
+    // System.out.println("pivot: " + a[pivot]);
+    // if (pivot == -1) {
+    // reverseA(a, 0, a.length - 1);
+    // System.out.println("Ans: "+Arrays.toString(a));
+    // return ;
+    // }
+    // System.out.println("before swap: " + Arrays.toString(a));
+
+    // for (int i = a.length - 1; i > pivot; i--) {
+    // System.out.println("a[i]: "+a[i]+" a[pivot]: "+a[pivot]);
+    // if (a[i] > a[pivot]) {
+    // swap(a, i, pivot);
+    // break;
+    // }
+
+    // }
+    // System.out.println("a after swap: " + Arrays.toString(a));
+    // reverseA(a, pivot + 1, a.length - 1);
+    // // return a;
+    // System.out.println("Ans: "+Arrays.toString(a));
+
+    // }
+
+    // public static void reverseA(int[] a, int lb, int ub) {
+    // while (lb < ub) {
+    // int temp = a[lb];
+    // a[lb] = a[ub];
+    // a[ub] = temp;
+    // lb++;
+    // ub--;
+    // }
+    // }
+
+    // public static void swap(int a[], int i, int j) {
+    // int temp = a[i];
+    // a[i] = a[j];
+    // a[j] = temp;
+    // }
+
+    // REVISION
+    // Let's REVISE the NExt permuatation
+    // ex 321 , 123
     int pivot = -1;
     for (int i = a.length - 2; i >= 0; i--) {
-      System.out.println("i: "+i);
       if (a[i] < a[i + 1]) {
-        System.out.println("Imf for i: "+i);
         pivot = i;
         break;
       }
     }
-    System.out.println("pivot: " + a[pivot]);
-    if (pivot == -1) {
-      reverseA(a, 0, a.length - 1);
-    System.out.println("Ans: "+Arrays.toString(a));
-      return ;
+        for (int j : a) {
+      System.out.println("a In main F: " + j);
     }
-    System.out.println("before  swap: " + Arrays.toString(a));
 
+    System.out.println("pivot: " + pivot);
+    if (pivot == -1) {
+      swap(a, 0, a.length - 1);
+      return;
+    }
     for (int i = a.length - 1; i > pivot; i--) {
-      System.out.println("a[i]: "+a[i]+" a[pivot]: "+a[pivot]);
       if (a[i] > a[pivot]) {
-        swap(a, i, pivot);
+        swap(a, pivot, i);
         break;
       }
-
     }
-    System.out.println("a after swap: " + Arrays.toString(a));
     reverseA(a, pivot + 1, a.length - 1);
-    // return a;
-    System.out.println("Ans: "+Arrays.toString(a));
 
-  }
-
-  public static void reverseA(int[] a, int lb, int ub) {
-    while (lb < ub) {
-      int temp = a[lb];
-      a[lb] = a[ub];
-      a[ub] = temp;
-      lb++;
-      ub--;
+    for (int j : a) {
+      System.out.println("a: " + j);
     }
+
   }
 
   public static void swap(int a[], int i, int j) {
     int temp = a[i];
     a[i] = a[j];
     a[j] = temp;
+        for (int k : a) {
+      System.out.println("a: " + k);
+    }
+  }
+
+  public static void reverseA(int a[], int lb, int ub) {
+    while (lb < ub) {
+      swap(a, lb, ub);
+      lb++;
+      ub--;
+
+    }
   }
 
   public static void main(String[] args) {
     NextPermutation n = new NextPermutation();
     // int[] ans = findGreaterNextPermutation(new int[] { 1, 2, 5, 4, 3 });
-     findGreaterNextPermutation(new int[] { 1, 2, 5, 4, 3 });
-    // int[] ans=findGreaterNextPermutation(new int[] { 3,2,1});
+    // findGreaterNextPermutation(new int[] { 1, 2, 5, 4, 3 });
+    findGreaterNextPermutation(new int[] { 1,3,2});
     // System.out.println("ans: " + Arrays.toString(ans));
   }
 }

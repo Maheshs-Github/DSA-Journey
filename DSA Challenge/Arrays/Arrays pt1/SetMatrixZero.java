@@ -129,56 +129,99 @@ public class SetMatrixZero {
 
   // let me re write the code for in place approach
   public void mZero(int[][] a) {
-    boolean isFirstRowZero = false;
-    boolean isFirstColZero = false;
-    // let's see if there is any 0 in row
+  //   boolean isFirstRowZero = false;
+  //   boolean isFirstColZero = false;
+  //   // let's see if there is any 0 in row
+  //   for (int i = 0; i < a[0].length; i++) {
+  //     if (a[0][i] == 0) {
+  //       isFirstRowZero = true;
+  //       break;
+  //     }
+
+  //   }
+  //   // now same for the to check if the 1st col is having any 0
+  //   for (int i = 0; i < a.length; i++) {
+  //     if (a[i][0] == 0) {
+  //       isFirstColZero = true;
+  //       break;
+  //     }
+  //   }
+
+  //   // Let's see athe 0's in remiang array other 1st row and col
+  //   for (int i = 1; i < a.length; i++) {
+  //     for (int j = 1; j < a[0].length; j++) {
+  //       if (a[i][j] == 0) {
+  //         a[0][i] = 0;
+  //         a[j][0] = 0;
+  //       }
+  //     }
+  //   }
+
+  //   // Let's add those 0's in respective row and col
+  //   for (int i = 1; i < a.length; i++) {
+  //     for (int j = 1; j < a[0].length; j++) {
+  //       if (a[0][i] == 0 || a[j][0] == 0) {
+  //         a[i][j] = 0;
+  //       }
+  //     }
+  //   }
+
+  //   // check the 0's in 1st row and col
+  //   if (isFirstRowZero) {
+  //     for (int i = 0; i < a[0].length; i++) {
+  //       a[0][i] = 0;
+
+  //     }
+  //   }
+  //   if (isFirstColZero) {
+  //     for (int i = 0; i < a.length; i++) {
+  //       a[i][0] = 0;
+
+  //     }
+  //   }
+
+  boolean isFirstColZero=false,isFirstRowZero=false;
+  // let's see the 1st row for any zeros
+  for (int i = 0; i < a[0].length; i++) {
+      if(a[0][i]==0){
+        isFirstRowZero=true;
+        break;
+      }
+  }
+  for (int i = 0; i < a.length; i++) {
+    if(a[i][0]==0){
+      isFirstColZero=true;
+      break;
+    }
+  }
+  for (int i = 1; i < a.length; i++) {
+    for (int j = 1; j < a[0].length; j++) {
+      if(a[i][j]==0){
+        a[i][0]=0;
+        a[0][j]=0;
+      }
+    }
+  }
+
+  for (int i = 1; i < a.length; i++) {
+    for (int j = 1; j < a[0].length; j++) {
+      if(a[i][0]==0 || a[0][j]==0){
+        a[i][j]=0;
+      }
+    }
+  }
+  if(isFirstRowZero){
     for (int i = 0; i < a[0].length; i++) {
-      if (a[0][i] == 0) {
-        isFirstRowZero = true;
-        break;
-      }
-
+      a[0][i]=0;
     }
-    // now same for the to check if the 1st col is having any 0
+  }
+  if(isFirstColZero){
     for (int i = 0; i < a.length; i++) {
-      if (a[i][0] == 0) {
-        isFirstColZero = true;
-        break;
-      }
+      a[i][0]=0;
     }
+  }
 
-    // Let's see athe 0's in remiang array other 1st row and col
-    for (int i = 1; i < a.length; i++) {
-      for (int j = 1; j < a[0].length; j++) {
-        if (a[i][j] == 0) {
-          a[0][i] = 0;
-          a[j][0] = 0;
-        }
-      }
-    }
 
-    // Let's add those 0's in respective row and col
-    for (int i = 1; i < a.length; i++) {
-      for (int j = 1; j < a[0].length; j++) {
-        if (a[0][i] == 0 || a[j][0] == 0) {
-          a[i][j] = 0;
-        }
-      }
-    }
-
-    // check the 0's in 1st row and col
-    if (isFirstRowZero) {
-      for (int i = 0; i < a[0].length; i++) {
-        a[0][i] = 0;
-
-      }
-    }
-    if (isFirstColZero) {
-      for (int i = 0; i < a.length; i++) {
-        a[i][0] = 0;
-
-      }
-    }
 
     System.out.println(Arrays.deepToString(a));
 
@@ -186,8 +229,8 @@ public class SetMatrixZero {
 
   public static void main(String[] args) {
     // int[][] a =new int[3][3];
-    int[][] a = { { 1, 1, 1 }, { 1, 0, 1 }, { 1, 1, 1 } };
-    // int[][] a = { {0,1,2,0},{3,4,5,2},{1,3,1,5} };
+    // int[][] a = { { 1, 1, 1 }, { 1, 0, 1 }, { 1, 1, 1 } };
+    int[][] a = { {0,1,2,0},{3,4,5,2},{1,3,1,5} };
     // int[][] a = {
     // { 1, 1, 1, 1 },
     // { 1, 1, 1, 1 },

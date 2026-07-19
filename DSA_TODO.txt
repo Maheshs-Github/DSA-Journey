@@ -4,4 +4,4 @@ okay  let's understand what is the package
 
 
 -Where to start from next
-1. Longest SubArray question for revsion , alos check the medimum revsion and starte with the new medium question , start fron theer  
+1. First and last revsion and understadn it 

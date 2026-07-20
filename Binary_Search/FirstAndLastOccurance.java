@@ -135,7 +135,8 @@ else
 
     // 
     // Let's get to the actual ans 
-        int[] ans= fLOccurance(new int[] {1,2,2,2,3},2); //1,3
+        // int[] ans= fLOccurance(new int[] {1,2,2,2,3},2); //1,3
+        int[] ans= fLOccurance(new int[] {1,2,2,2,3},3); //1,3
 
     System.out.println("ans: "+Arrays.toString(ans));
     // System.out.println("ans: "+Arrays.toString(ans));
@@ -145,4 +146,3 @@ else
 
 
 // how chnaging the a[mid]<=key  condition gives the lower bound and upper bound 
-

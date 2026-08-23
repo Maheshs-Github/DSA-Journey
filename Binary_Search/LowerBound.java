@@ -12,9 +12,9 @@ public class LowerBound {
 
   // 
   // let's see how we can find the lower bound with BS 
-    public static int lBound(int a[], int key){
-      return search(a,0,a.length-1,key);
-    }
+    // public static int lBound(int a[], int key){
+    //   return search(a,0,a.length-1,key);
+    // }
 
 
   // 
@@ -26,18 +26,52 @@ public class LowerBound {
     // }
     // return -1;
   // }
-  public static int search(int a[], int low,int high, int key){
-    if(low>high)
-      return low;
-    int mid=Math.floorDiv(low+high, 2);
-    // to gt lowebound using mid-1
-    // if(a[mid]==key) return mid;
-    if(a[mid]>=key)
-      return search(a, low, mid-1, key);
-    else
-      return search(a, mid+1, high, key);
+  // public static int search(int a[], int low,int high, int key){
+  //   if(low>high)
+  //     return low;
+  //   int mid=Math.floorDiv(low+high, 2);
+  //   // to gt lowebound using mid-1
+  //   // if(a[mid]==key) return mid;
+  //   if(a[mid]>=key)
+  //     return search(a, low, mid-1, key);
+  //   else
+  //     return search(a, mid+1, high, key);
+  // }
+
+  // Let's revise the lower bound 
+  // public static int lBound(int[] a,int key){
+  //   return search(a,0,a.length-1, key);
+  // }
+
+  // public static int search(int[] a,int lb,int ub, int key){
+  //   if(lb>ub)
+  //     return lb;
+  //   int mid=Math.floorDiv(lb+ub,2);
+  //   System.out.println("a[lb]: "+a[lb]+" a[ub]: "+a[ub]+" a[mid]: "+a[mid]+" mid: "+mid);
+  //   if(a[mid]>=key)
+  //     return search(a,lb,mid-1,key);
+  //   else
+  //     return search(a,mid+1,ub,key);
+  // }
+
+  // 
+  // for thr upper bound 
+    public static int uBound(int[] a,int key){
+    return search(a,0,a.length-1, key);
   }
 
+  public static int search(int[] a,int lb,int ub, int key){
+    if(lb>ub)
+      return ub;
+    int mid=Math.floorDiv(lb+ub,2);
+    System.out.println("a[lb]: "+a[lb]+" a[ub]: "+a[ub]+" a[mid]: "+a[mid]+" mid: "+mid);
+    if(a[mid]<=key)
+      return search(a,mid+1,ub,key);
+    else
+      return search(a,lb,mid-1,key);
+  }
+
+    // int ans=lBound(new int[] {3,5,8,9,9,15,19}, 9); //3
   // 
   // okay Upper Bound with BS
   //     public static int uBound(int a[], int key){
@@ -63,11 +97,11 @@ public class LowerBound {
     // int ans=lBound(new int[] {1,2,3,4}, 1); //0
     // int ans=lBound(new int[] {1,2,4}, 3); //2
     // int ans=lBound(new int[] {3,5,8,15,19}, 9); //3
-    int ans=lBound(new int[] {3,5,8,9,9,15,19}, 9); //3
+    // int ans=lBound(new int[] {3,5,8,9,9,15,19}, 9); //3
 
         // int ans=uBound(new int[] {1,2,3,4}, 3); //3
     // int ans=uBound(new int[] {3,5,8,15,19}, 9); //3
-    // int ans=uBound(new int[] {3,5,8,9,9,9,9,9,15,19}, 9); //5 //8
+    int ans=uBound(new int[] {3,5,8,9,9,9,9,9,15,19}, 9); //5 //8
     System.out.println("ans: "+ans);
   }  
 }

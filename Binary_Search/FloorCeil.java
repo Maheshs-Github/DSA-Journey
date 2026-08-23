@@ -1,38 +1,63 @@
 import java.util.Arrays;
 
 public class FloorCeil {
+  // public static int[] floCel(int[] a, int key) {
+  //   return search(a, 0, a.length - 1, key);
+  // }
+
+  // public static int[] search(int[] a, int low, int high, int key) {
+  //   if (high < 0)
+  //     return new int[] { -1,a[low] };
+  //   System.out.println("len: " + a[a.length - 1]);
+  //   if (low > a.length - 1)
+  //     return new int[] { a[high], -1 };
+
+  //   // System.out.println("hello");
+  //   if (low > high) {
+  //     // System.out.println("[ "+high +" "+ low+" ]");
+  //     return new int[] { a[high], a[low] };
+  //   }
+  //   int mid = Math.floorDiv(low + high, 2);
+  //   System.out.println("high: " + high + " low: " + low + " mid: " + mid + " a[mid]" + a[mid]);
+  //   if (a[mid] == key) {
+  //     // System.out.println("[ "+mid +mid+" ]");
+  //     return new int[] { a[mid], a[mid] };
+  //   }
+  //   if (a[mid] >= key)
+  //     return search(a, low, mid - 1, key);
+  //   else
+  //     return search(a, mid + 1, high, key);
+  // }
+
   public static int[] floCel(int[] a, int key) {
-    return search(a, 0, a.length - 1, key);
-  }
+    return search(a,0,a.length-1,key);
+}
+public static int[] search(int[] a,int lb,int ub, int key){
+    if(ub<0)
+    return new int[] {-1,a[lb]};
+  if(lb>a.length-1)
+    return new int[] {a[ub],-1};
+  if(lb>ub)
+    return new int[] {a[ub],a[lb]};
 
-  public static int[] search(int[] a, int low, int high, int key) {
-    if (high < 0)
-      return new int[] { -1,a[low] };
-    System.out.println("len: " + a[a.length - 1]);
-    if (low > a.length - 1)
-      return new int[] { a[high], -1 };
-
-    // System.out.println("hello");
-    if (low > high) {
-      // System.out.println("[ "+high +" "+ low+" ]");
-      return new int[] { a[high], a[low] };
-    }
-    int mid = Math.floorDiv(low + high, 2);
-    System.out.println("high: " + high + " low: " + low + " mid: " + mid + " a[mid]" + a[mid]);
-    if (a[mid] == key) {
-      // System.out.println("[ "+mid +mid+" ]");
-      return new int[] { a[mid], a[mid] };
-    }
-    if (a[mid] >= key)
-      return search(a, low, mid - 1, key);
-    else
-      return search(a, mid + 1, high, key);
-  }
+  int mid=Math.floorDiv(lb+ub, 2);
+  if(a[mid]==key)
+    return new int[] {a[mid],a[mid]};
+  if(a[mid]<=key)
+    return search(a, mid+1, ub, key);
+  else
+    return search(a,lb,mid-1,key);
+}
 
   public static void main(String[] args) {
     // int[] ans=floCel(new int[] {3,5,8,15,19}, 9); //8,15
     // int[] ans = floCel(new int[] { 3, 5, 8, 15, 19 }, 1); // -1,3
-    int[] ans = floCel(new int[] { 3, 5, 8, 15, 19 }, 21); // -1,3
+    // int[] ans = floCel(new int[] { 3, 5, 8, 15, 19 }, 21); // -1,3
+    // int[] ans = floCel(new int[] { 3, 5, 8, 15, 19 }, 15); // [15,15]
+    // int[] ans = floCel(new int[] { 3, 5, 8, 15, 19 }, 13); // [8,15]
+    // int[] ans = floCel(new int[] { 3, 5, 8,8,8, 15, 19 }, 2); // [-1,3]
+    int[] ans = floCel(new int[] { 3, 5, 8,8,8, 15, 19 }, 20); // [19,-1]
+
 
     System.out.println("Arrays : " + Arrays.toString(ans));
   }

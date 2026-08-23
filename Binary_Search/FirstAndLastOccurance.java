@@ -49,7 +49,7 @@ public class FirstAndLastOccurance {
 //       return search(a, mid+1, ub, key);
 //     else if(a[mid]>=key)
 //       return search(a, lb, mid-1, key);
-
+ 
 //     return new int[] {-1,-1};
 //   }
 
@@ -79,42 +79,98 @@ public class FirstAndLastOccurance {
 
 // 
 // let's freshly start then 
-  // let's see how we can get the first occurance then 
-    public static int[] fLOccurance(int[] a, int key) {
-    // return search(a,0,a.length-1,key);
-    int lb=lSearch(a,0,a.length-1,key);
-            // Key doesn't exist
-        if (lb == a.length || a[lb] != key) {
-            return new int[] { -1, -1 };
-        }
-        int ub=uSearch(a, 0, a.length-1, key);
-        return new int[] {lb,ub};
+//   // let's see how we can get the first occurance then 
+//     public static int[] fLOccurance(int[] a, int key) {
+//     // return search(a,0,a.length-1,key);
+//     int lb=lSearch(a,0,a.length-1,key);
+//             // Key doesn't exist
+//         if (lb == a.length || a[lb] != key) {
+//             return new int[] { -1, -1 };
+//         }
+//         int ub=uSearch(a, 0, a.length-1, key);
+//         return new int[] {lb,ub};
+// }
+// public static int lSearch(int[] a,int lb,int ub,int key){
+//   if(ub<lb){
+//     // System.out.println("ub: "+ub);
+//     return lb;
+//   }
+// int mid=Math.floorDiv(lb+ub, 2);
+// if(a[mid]>=key)
+//   return lSearch(a,lb,mid-1,key);
+// else
+//   return lSearch(a,mid+1,ub,key);
+
+//   }
+
+//   public static int uSearch(int[] a,int lb,int ub,int key){
+//   if(lb>ub){
+//     // System.out.println("ub: "+ub);
+//     return ub;
+//   }
+// int mid=Math.floorDiv(lb+ub, 2);
+// if(a[mid]<=key)
+//   return uSearch(a,mid+1,ub,key);
+// else
+//   return uSearch(a,lb,mid-1,key);
+
+//   }
+
+public static int[] fLOccurance(int a[],int key){
+
+  // 
+  // let's see with the two pointer apprach 
+  // int left=0,right=a.length-1,leftVal=-1,rightVal=-1;
+  // System.out.println("a.length-1: "+(a.length-1));
+  // while(left<=right){
+  //   System.out.println("left:"+left+" aleft: "+a[left]+" LeftVal:" +leftVal+" right: "+right+" aright: "+a[right]+" rightVal: "+rightVal);
+  //   if(a[left]==key && leftVal==-1)
+  //     leftVal=left;
+  //   if(a[right]==key && rightVal==-1)
+  //           rightVal=right;
+
+  //   left++;
+  //   right--;
+  // }
+  // // if(leftVal!=-1 && rightVal!=-1)
+  //   return new int[] {leftVal,rightVal};
+  // // if(leftVal==-1)
+  // //   return new int[] {-1,-1};
+
+
+    // 
+  // let's see with BS 
+  int lb=lBound(a, 0, a.length-1, key);
+  int ub=uBound(a, 0, a.length-1, key);
+
+  return new int[] {lb,ub};
+
+
 }
-public static int lSearch(int[] a,int lb,int ub,int key){
-  if(ub<lb){
-    // System.out.println("ub: "+ub);
-    return lb;
-  }
-int mid=Math.floorDiv(lb+ub, 2);
-if(a[mid]>=key)
-  return lSearch(a,lb,mid-1,key);
-else
-  return lSearch(a,mid+1,ub,key);
 
-  }
+  // 
+  // let's see with BS 
+   public static int lBound(int a[],int lb,int ub, int key){
+    if(lb>ub)
+      return lb;
+    int mid=Math.floorDiv((lb+ub), 2);
+    if(mid>=key)
+      return lBound(a, lb, mid-1, key);
+    else 
+      return lBound(a, mid+1, ub, key);
 
-  public static int uSearch(int[] a,int lb,int ub,int key){
-  if(lb>ub){
-    // System.out.println("ub: "+ub);
-    return ub;
-  }
-int mid=Math.floorDiv(lb+ub, 2);
-if(a[mid]<=key)
-  return uSearch(a,mid+1,ub,key);
-else
-  return uSearch(a,lb,mid-1,key);
+   }
 
-  }
+      public static int uBound(int a[],int lb,int ub, int key){
+    if(lb>ub)
+      return ub;
+    int mid=Math.floorDiv((lb+ub), 2);
+    if(mid<=key)
+      return lBound(a, mid+1, ub, key);
+    else 
+      return lBound(a, lb, mid-1, key);
+
+   }
 
 
   public static void main(String[] args) {
@@ -135,8 +191,9 @@ else
 
     // 
     // Let's get to the actual ans 
-        // int[] ans= fLOccurance(new int[] {1,2,2,2,3},2); //1,3
-        int[] ans= fLOccurance(new int[] {1,2,2,2,3},3); //1,3
+        int[] ans= fLOccurance(new int[] {1,2,2,2,3},2); //1,3
+        // int[] ans= fLOccurance(new int[] {1,2,2,2,3},3); //-1,4
+        // int[] ans= fLOccurance(new int[] {1,2,2,2},3); //-1,-1
 
     System.out.println("ans: "+Arrays.toString(ans));
     // System.out.println("ans: "+Arrays.toString(ans));

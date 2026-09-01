@@ -18,8 +18,8 @@ public class FindMinSortRotated {
   }
 
   public static void main(String[] args) {
-    // int ans=sortedRotated(new int[] {4 ,5 ,6 ,7 ,0 ,1 ,2}); //0
-    int ans=sortedRotated(new int[] {3,4,5,1,2}); //0
+    int ans=sortedRotated(new int[] {4 ,5 ,6 ,7 ,0 ,1 ,2}); //0
+    // int ans=sortedRotated(new int[] {3,4,5,1,2}); //1
     System.out.println("ans: "+ans);
     
   }

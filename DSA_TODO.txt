@@ -4,4 +4,4 @@ okay  let's understand what is the package
 
 
 -Where to start from next
-1. Let's revise the FInd Min and dry run it 
+1. Continue from the Nth Root

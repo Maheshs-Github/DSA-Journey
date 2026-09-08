@@ -1,0 +1,10 @@
+{
+  
+
+"java.debug.settings.onBuildFailureProceed":true,
+
+"java.autobuild.enabled": true,
+"java.format.settings.url": ".vscode/java-formatter.xml"
+
+
+}

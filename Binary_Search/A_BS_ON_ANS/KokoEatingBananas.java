@@ -32,7 +32,7 @@ public class KokoEatingBananas {
     return kokoAns(a,1,Max,h);
   }
   public static int kokoAns(int[] a,int lb, int ub,int h){
-    if(lb>ub)
+    if(lb>=ub)
       return lb;
     int mid=Math.floorDiv(lb+ub,2);
     int finalH=0;
@@ -44,7 +44,6 @@ public class KokoEatingBananas {
           return kokoAns(a, mid+1,ub, h);
           else
             return kokoAns(a, lb,mid, h);
-
   }
   public static void main(String[] args) {
     int Ans=getAns(new int[]{3, 6, 7, 11},8);

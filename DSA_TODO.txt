@@ -4,4 +4,5 @@ okay  let's understand what is the package
 
 
 -Where to start from next
-1. Dry Run Koko Eating Bananas
+1. Dry Run the String to Int & Oveflow thing 
+2. Lngest subString opyimal apprach 

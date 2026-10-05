@@ -6,3 +6,4 @@ okay  let's understand what is the package
 -Where to start from next
 1. Dry Run the String to Int & Oveflow thing 
 2. Lngest subString opyimal apprach 
+3. Start from why diff apprach for finding the minFreq and maxFeq with Min , MAx Char

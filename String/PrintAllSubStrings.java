@@ -7,11 +7,11 @@ public class PrintAllSubStrings {
           // s1.append(str.charAt(j));
           // str.substring(i, j+1);
           System.out.println(" "+str.substring(i, j+1));
-          
+
         }
       }
     }
-        public static void main(String[] args) {
+       public static void main(String[] args) {
     SString("abc"); 
   }
 }

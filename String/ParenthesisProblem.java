@@ -45,3 +45,72 @@ public class ParenthesisProblem {
     System.out.println("Ans: "+ans);
   }
 }
+
+
+
+// 
+// 
+// Understanding and Patterns of the Problem 
+// Yes — for notes, I would make it **very code-oriented** so you can look at it later and immediately remember.
+
+// ### Remove Outermost Parentheses
+
+// **Problem:** Remove the outermost pair of every primitive parentheses group.
+
+// ```text
+// Input:  (()())
+// Output: ()()
+// ```
+
+// ### Pattern: `depth`
+
+// ```java
+// int depth = 0;
+// StringBuilder sb = new StringBuilder();
+
+// for (char ch : str.toCharArray()) {
+
+//     if (ch == '(') {
+//         if (depth > 0) sb.append(ch); // not outer
+//         depth++;
+//     } 
+//     else {
+//         depth--;
+//         if (depth > 0) sb.append(ch); // not outer
+//     }
+// }
+
+// return sb.toString();
+// ```
+
+// ### Remember this
+
+// ```text
+// '(' → check BEFORE depth++
+// ')' → check AFTER depth--
+// ```
+
+// Why?
+
+// ```text
+// (       → depth 0 → OUTER → don't add
+// (       → depth 1 → INNER → add
+// )       → depth becomes 1 → INNER → add
+// )       → depth becomes 0 → OUTER → don't add
+// ```
+
+// So the **one-line memory trick**:
+
+// > **Opening:** `if depth > 0 → add`, then `depth++`  
+// > **Closing:** `depth--`, then `if depth > 0 → add`
+
+// And:
+
+// ```java
+// StringBuilder → String
+// sb.toString()
+// ```
+
+// To iterate over char from the String will use str.toCharArray()
+
+// That's enough for your notes.

@@ -4,6 +4,4 @@ okay  let's understand what is the package
 
 
 -Where to start from next
-1. Dry Run the String to Int & Oveflow thing 
-2. Lngest subString opyimal apprach 
-3. Let's revise and understad the patterns of the String 
+1. Max remove solve it , dry Run and then Stack approach

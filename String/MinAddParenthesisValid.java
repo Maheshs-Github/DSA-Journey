@@ -21,8 +21,8 @@ public class MinAddParenthesisValid {
   }
   public static void main(String[] args) {
     // int ans= valPara("())");
-    // int ans= valPara("(((");
-    int ans= valPara("()))((");
+    int ans= valPara("((("); //3
+    // int ans= valPara("()))(("); //4
     System.out.println("Ans: "+ans);
   }
 }

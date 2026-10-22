@@ -20,28 +20,47 @@ public class ParenthesisProblem {
 
 
     // Let's revise it 
-    StringBuilder s1=new StringBuilder();
+    // StringBuilder s1=new StringBuilder();
+    // int depth=0;
+    // for (int i = 0; i < str.length(); i++) {
+    //   // System.out.println("i: "+i+" cha[i]: "+str.charAt(i)+" depth: "+depth);
+    //   if(str.charAt(i)=='('){
+    //     if(depth>0){
+    //       s1.append(str.charAt(i));
+    //     }
+    //       depth++;
+    //   }
+    //   else{
+    //     depth--;
+    //     if(depth>0)
+    //       s1.append(str.charAt(i));
+    //   }
+    // }
+    // return s1.toString();
+
+
+
+    // Revision 2.0 
     int depth=0;
+    StringBuilder s=new StringBuilder();
     for (int i = 0; i < str.length(); i++) {
-      // System.out.println("i: "+i+" cha[i]: "+str.charAt(i)+" depth: "+depth);
       if(str.charAt(i)=='('){
-        if(depth>0){
-          s1.append(str.charAt(i));
-        }
-          depth++;
+        if(depth>0)
+        s.append(str.charAt(i));
+      depth++;
       }
       else{
         depth--;
         if(depth>0)
-          s1.append(str.charAt(i));
+          s.append(str.charAt(i));
       }
     }
-    return s1.toString();
+    return s.toString();
 
   }
   public static void main(String[] args) {
-    // String ans=Parenthesis("(()())"); //Ans: ()()
-    String ans=Parenthesis("()(()())(())"); //Ans: ()()
+    String ans=Parenthesis("(()())"); //Ans: ()()
+    // String ans=Parenthesis("()(()())(())"); //Ans: ()()
     System.out.println("Ans: "+ans);
   }
 }

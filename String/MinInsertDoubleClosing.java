@@ -1,5 +1,3 @@
-
-
 public class MinInsertDoubleClosing {
   public static int insertBalance(String str){
     int need=0,ans=0;

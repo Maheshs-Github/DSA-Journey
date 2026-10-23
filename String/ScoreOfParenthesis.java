@@ -22,14 +22,28 @@ public class ScoreOfParenthesis {
     // }
     // return ans;
 
+    // int depth=0,ans=0;
+    // for (int i = 0; i < str.length(); i++) {
+    //   if(str.charAt(i)=='(')
+    //     depth++;
+    //   else{
+    //     depth--;
+    //     if(str.charAt(i-1)=='(')
+    //       ans+=(int) Math.pow(2,depth);
+    //   }
+    // }
+    // return ans;
+
+    // Let's Revise It 
     int depth=0,ans=0;
-    for (int i = 0; i < str.length(); i++) {
+    for(int i=0;i<str.length();i++){
       if(str.charAt(i)=='(')
         depth++;
       else{
         depth--;
         if(str.charAt(i-1)=='(')
-          ans+=(int) Math.pow(2,depth);
+        ans+=(int)Math.pow(2, depth);
+        System.out.println("ans: "+ans+" i: "+i);
       }
     }
     return ans;
@@ -40,7 +54,6 @@ public class ScoreOfParenthesis {
     // int ans=scorePara("()(())"); //3
     // int ans=scorePara("(()())"); //4
     int ans=scorePara("(()(()))"); //6
-    // int ans=scorePara("(()(()))"); //4
     System.out.println("ans: "+ans);
   }
   

@@ -1,23 +1,39 @@
 public class MinAddParenthesisValid {
  
-  public static int valPara(String str){
-    int depth=0,extra=0;
-    for (char ch: str.toCharArray()) {
-      // if(depth<0){
-      //   depth--;
-      //   continue;
-      // }
-      if(ch=='(')
-        depth++;
-      if (ch==')'){
-        if(depth>0)
-        depth--;
-      else
-        extra++;
+  // public static int valPara(String str){
+  //   int depth=0,extra=0;
+  //   for (char ch: str.toCharArray()) {
+  //     // if(depth<0){
+  //     //   depth--;
+  //     //   continue;
+  //     // }
+  //     if(ch=='(')
+  //       depth++;
+  //     if (ch==')'){
+  //       if(depth>0)
+  //       depth--;
+  //     else
+  //       extra++;
+  //     }
+  //     System.out.println("depth: "+depth);
+  //   }
+  //   return  extra+depth;
+  // }
+
+  // Let's Revise it , It is Simple but Let's see
+    public static int valPara(String str){
+      int depth=0,extra=0;
+      for (int i = 0; i < str.length(); i++) {
+        if(str.charAt(i)=='(')
+          depth++;
+        else{
+          if(depth>0)
+            depth--;
+          else
+            extra++;
+        }
       }
-      System.out.println("depth: "+depth);
-    }
-    return  extra+depth;
+      return depth+extra;
   }
   public static void main(String[] args) {
     // int ans= valPara("())");

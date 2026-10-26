@@ -1,21 +1,44 @@
 public class MinInsertDoubleClosing {
   public static int insertBalance(String str){
+    // int need=0,ans=0;
+    // for (int i = 0; i < str.length(); i++) {
+    //   if(str.charAt(i)=='('){
+    //     need+=2;
+    //    if (need % 2 != 0) {
+    //                 ans++;
+    //                 need--;
+    //             }
+    //           }
+    //   else
+    //   {
+    //     need--;
+    //     if(need<0)
+    //     {
+    //       ans++;
+    //       need=1;
+    //     }
+    //   }
+    // }
+    // return ans+need;
+
+    // 
+    // 
+    // Let's Revise it 
     int need=0,ans=0;
     for (int i = 0; i < str.length(); i++) {
       if(str.charAt(i)=='('){
         need+=2;
-       if (need % 2 != 0) {
-                    ans++;
-                    need--;
-                }
-              }
-      else
-      {
-        need--;
-        if(need<0)
-        {
+        if(need %  2 !=0){
           ans++;
-          need=1;
+          need--;
+        }
+      }
+      else{
+        need--;
+        System.out.println("need: "+need+" for i: "+str.charAt(i));
+        if(need<0){
+          ans++;
+          need=0;
         }
       }
     }
@@ -73,6 +96,7 @@ public class MinInsertDoubleClosing {
   // }
   public static void main(String[] args) {
     // int ans= insertBalance("())))()"); //2
+    // int ans= insertBalance("(()))))("); //3
     // int ans= insertBalance("))())("); //3
     // int ans= insertBalance("(())))"); //0
     // int ans= insertBalance(")))))"); //4
@@ -222,3 +246,20 @@ public class MinInsertDoubleClosing {
 // 4. What remains incomplete at the end?
 
 // The key skill is defining what your counter means before writing conditions. Here, `need` always represents the number of closing parentheses still required.
+
+
+
+
+
+// Because when need < 0, we encountered a ) without an opening ( to support it.
+// if (need < 0) {
+//     ans++;
+//     need = 1;
+// }
+
+
+// Why need = 1?
+// 1. ans++ → insert a missing (.
+// 2. That new ( requires two closing parentheses: )).
+// 3. The current ) satisfies one of them, so one more ) is needed.
+// Therefore, need = 1.

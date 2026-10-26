@@ -28,27 +28,44 @@ public class ValidParenthesis {
 
     // 
     // With the Stack
+    // Stack<Character> s=new Stack<>();
+    // for (char ch : str.toCharArray()) {
+    //   if(ch=='(' || ch=='{' || ch=='[')
+    //     s.push(ch);
+    //   else{
+
+    //     if(s.isEmpty())
+    //       return false;
+    //     char top=s.pop();
+    //     if((ch==')' && top!='(') ||
+    //     (ch=='}' && top!='{') ||
+    //     (ch==']' && top!='['))
+    //     return false;
+    //   }
+      
+    // }
+    // return s.isEmpty();
+
+
+    // LET"S REVISE IT 
     Stack<Character> s=new Stack<>();
-    for (char ch : str.toCharArray()) {
-      if(ch=='(' || ch=='{' || ch=='[')
+    for (int i = 0; i < str.length(); i++) {
+      char ch=str.charAt(i);
+      if(ch=='(' || ch=='{' || ch=='[') 
         s.push(ch);
       else{
-
         if(s.isEmpty())
-          return false;
+          return  false;
         char top=s.pop();
-        if((ch==')' && top!='(') ||
-        (ch=='}' && top!='{') ||
-        (ch==']' && top!='['))
-        return false;
+        if((ch==')' && top!='(')  || (ch==']' && top!='[' || (ch=='}' && top!='{')))
+          return false;
       }
-      
     }
     return s.isEmpty();
   }
       public static void main(String[] args) {
-    boolean ans=ValParenthesis("()[]"); //Ans: true
-    // boolean ans=ValParenthesis("(]"); //Ans: false
+    // boolean ans=ValParenthesis("()[]"); //Ans: true
+    boolean ans=ValParenthesis("(]"); //Ans: false
     System.out.println("Ans: "+ans);
   }
 }

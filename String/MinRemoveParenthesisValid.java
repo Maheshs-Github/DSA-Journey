@@ -39,52 +39,110 @@ public class MinRemoveParenthesisValid {
 
   // Let's see with Stack Approach 
     public static String valPara(String str){
-    Stack<Integer> s=new Stack<>();
+    // Stack<Integer> s=new Stack<>();
+    // StringBuilder s1=new StringBuilder();
+    // for (Character ch : str.toCharArray()) {
+    //   if(ch=='('){
+    //     // s.push(ch);
+    //     s.push(s1.length());
+    //     s1.append(ch);
+    //       continue;
+    //   }
+    //   if(ch==')'){
+    //     if(s.isEmpty())
+    //       continue;
+    //     // char top=s.pop();
+    //     // if(!s.pop())
+    //       // continue;
+    //     else{
+    //       s1.append(ch);
+    //       s.pop();
+    //       continue;
+    //     }
+    //   }
+    //   s1.append(ch);
+    // }
+    // System.out.println("s1: "+s1);
+    //     System.out.println("Ans: "+s.size());
+    // // for(int i=s1.length()-1;i>=0 && !s.isEmpty();i--){
+    // //   if(s1.charAt(i)=='('){
+    // //     s1.deleteCharAt(i);
+    // //     s.pop();
+    // //   }
+    // // System.out.println("s1: "+s1);
+    // // System.out.println("s: "+s);
+    // // }
+    //     while(!s.isEmpty())
+    //       s1.deleteCharAt(s.pop());
+    // System.out.println("s1: "+s1);
+    // return s1.toString();
+
+
+    // Let's revise it , depth approach
+    // StringBuilder s=new StringBuilder();
+    // int depth=0;
+    // for (int i = 0; i < str.length(); i++) {
+    //   if(str.charAt(i)=='('){
+    //     depth++;
+    //     s.append(str.charAt(i));
+    //     continue;
+    //   }
+    //   else if(str.charAt(i)==')'){
+    //     if(depth>0){
+    //       s.append(str.charAt(i));
+    //       depth--;
+    //     }
+    //     continue;
+    //   }
+    //   s.append(str.charAt(i));
+      
+    // }
+    // if(depth>0){
+    //   for (int i = s.length()-1; i >=0 && depth>0 ; i--) {
+    //     if(s.charAt(i)=='('){
+    //       s.deleteCharAt(i);
+    //       depth--;
+    //     }
+    //   }
+    // }
+    // return s.toString();
+
+
+    // let's see with the Stack Approach
     StringBuilder s1=new StringBuilder();
-    for (Character ch : str.toCharArray()) {
+    Stack<Character> s=new Stack<>();
+    for (int i = 0; i < str.length(); i++) {
+      char ch=str.charAt(i);
       if(ch=='('){
-        // s.push(ch);
-        s.push(s1.length());
+        s.push(ch);
         s1.append(ch);
-          continue;
+        continue;
       }
-      if(ch==')'){
-        if(s.isEmpty())
-          continue;
-        // char top=s.pop();
-        // if(!s.pop())
-          // continue;
-        else{
-          s1.append(ch);
+      else if(ch==')')
+      {
+        if(!s.isEmpty()){
           s.pop();
-          continue;
+          s1.append(ch);
         }
+        continue;
       }
       s1.append(ch);
     }
-    System.out.println("s1: "+s1);
-        System.out.println("Ans: "+s.size());
-    // for(int i=s1.length()-1;i>=0 && !s.isEmpty();i--){
-    //   if(s1.charAt(i)=='('){
-    //     s1.deleteCharAt(i);
-    //     s.pop();
-    //   }
-    // System.out.println("s1: "+s1);
-    // System.out.println("s: "+s);
-    // }
-        while(!s.isEmpty())
-          s1.deleteCharAt(s.pop());
-    System.out.println("s1: "+s1);
+    for(int i=s1.length()-1;i>=0 && !s.isEmpty();i--){
+        if(s1.charAt(i)=='('){
+          s1.deleteCharAt(i);
+          s.pop();
+    }
+  }
     return s1.toString();
-
   }
 
 
     public static void main(String[] args) {
-    String ans= valPara("lee(t(c)o)de)"); //lee(t(c)o)de
+    // String ans= valPara("lee(t(c)o)de)"); //lee(t(c)o)de
     // String ans= valPara("a)b(c)d");  //ab(c)d
     // String ans= valPara("))((");  //
-    // String ans= valPara("(a(b(c)d)");  //ab(c)d
+    String ans= valPara("(a(b(c)d)");  //ab(c)d
 
     System.out.println("Ans: "+ans);
   }

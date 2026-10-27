@@ -1,0 +1,14 @@
+# Compiled Java
+*.class
+out/
+bin/
+
+# JVM crash and replay logs
+hs_err_pid*.log
+replay_pid*.log
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+Thumbs.db

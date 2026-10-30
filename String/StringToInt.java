@@ -38,31 +38,56 @@ public class StringToInt {
     //   }
 
     // okay see the proper solution 
-          public static int RToI(String str){
-            int sign=+1,intVal=0,i=0;
-            while(i<str.length() && str.charAt(i)==' ')
-              i++;
-            if(i<str.length() && (str.charAt(i)=='+'|| str.charAt(i)=='-'))
-            {
-              if(str.charAt(i)=='-')
-                sign=-1;
-              i++;
-            }
-            while(i<str.length() && Character.isDigit(str.charAt(i))){
-              int digit=str.charAt(i)-'0';
-               // 4. Check overflow
-        if (intVal > (Integer.MAX_VALUE - digit) / 10) {
-            return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-        }
-              intVal=intVal*10+digit;
-              i++;
-            }
-            return intVal*sign;
+        //   public static int RToI(String str){
+        //     int sign=+1,intVal=0,i=0;
+        //     while(i<str.length() && str.charAt(i)==' ')
+        //       i++;
+        //     if(i<str.length() && (str.charAt(i)=='+'|| str.charAt(i)=='-'))
+        //     {
+        //       if(str.charAt(i)=='-')
+        //         sign=-1;
+        //       i++;
+        //     }
+        //     while(i<str.length() && Character.isDigit(str.charAt(i))){
+        //       int digit=str.charAt(i)-'0';
+        //        // 4. Check overflow
+        // if (intVal > (Integer.MAX_VALUE - digit) / 10) {
+        //     return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+        // }
+        //       intVal=intVal*10+digit;
+        //       i++;
+        //     }
+        //     return intVal*sign;
+        //   }
+        public static int SToI(String str){
+          int ans=0,i=0,sign=1;
+          System.out.println("i: "+i);
+          while(i<str.length() && str.charAt(i)==' ' || str.charAt(i)=='+' || str.charAt(i)=='-'){
+            if(str.charAt(i)=='-')
+              sign=-1;
+            i++;
           }
+          int digit=0;
+          while(i<str.length() && Character.isDigit(str.charAt(i))){
+            System.out.println("ans: "+ans);
+            digit=str.charAt(i)-'0';
+
+             // 4. Check overflow
+            if (ans > (Integer.MAX_VALUE - digit) / 10) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            ans=(ans*10)+digit;
+            i++;
+          }
+          return ans*sign;
+        }
+
+
         public static void main(String[] args) {
-    int ans=RToI("   -42"); //Ans: 42
+    // int ans=RToI("   -42"); //Ans: 42
     // int ans=RToI("1337c0d3"); //Ans: 1337
     // int ans=RToI("0-1"); //Ans: 0
+    int ans=SToI("  -42e34"); //Ans: 42
 
     System.out.println("Ans: "+ans);
   

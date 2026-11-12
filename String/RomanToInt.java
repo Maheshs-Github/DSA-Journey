@@ -69,41 +69,79 @@ public class RomanToInt {
 //   }
 
 // LET"S REVISE IT 
-public static int getInt(char roman){
-  switch (roman) {
-      case 'I':
-        return 1;
-      case 'V':
-        return 5;
-      case 'X':
-        return 10;
-      case 'L':
+// public static int getInt(char roman){
+//   switch (roman) {
+//       case 'I':
+//         return 1;
+//       case 'V':
+//         return 5;
+//       case 'X':
+//         return 10;
+//       case 'L':
+//         return 50;
+//       case 'C':
+//         return 100;
+//       case 'D':
+//         return 500;
+//       case 'M':
+//         return 1000;
+//       default:
+//           throw new AssertionError();
+//   }
+// }
+// // IX- 9, XI-11
+
+// public static int RToI(String romString){
+//   int ans=0;
+
+//     for(int i=0;i<romString.length();i++){
+//     int current=getInt(romString.charAt(i));
+//     // int next=getInt(romString.charAt(i+1));
+//     if(i<romString.length()-1 && current<getInt(romString.charAt(i+1)))
+//       ans-=current;
+//     else
+//       ans+=current;
+//     System.out.println("curre: "+current+" ans: "+ans);
+//   }
+//   return ans;
+// }
+
+
+// 
+// 
+// LET'S REVISE IT AGAIN
+public static int getInt(char  roman){
+  switch(roman){
+    case 'I':
+      return 1;
+    case 'V':
+      return 5;
+    case 'X':
+      return 10;
+    case 'L':
         return 50;
-      case 'C':
+    case 'C':
         return 100;
-      case 'D':
+    case 'D':
         return 500;
-      case 'M':
+    case 'M':
         return 1000;
-      default:
-          throw new AssertionError();
+    default:
+      throw new AssertionError();
   }
 }
-// IX- 9, XI-11
 
-public static int RToI(String romString){
+public static int RToI(String s){
   int ans=0;
-
-    for(int i=0;i<romString.length();i++){
-    int current=getInt(romString.charAt(i));
-    // int next=getInt(romString.charAt(i+1));
-    if(i<romString.length()-1 && current<getInt(romString.charAt(i+1)))
-      ans-=current;
-    else
-      ans+=current;
-    System.out.println("curre: "+current+" ans: "+ans);
+  for (int i = 0; i < s.length(); i++) {
+    if(i<s.length()-1 && getInt(s.charAt(i))<getInt(s.charAt(i+1))){
+      ans-=getInt(s.charAt(i));
+    }
+    else{
+      ans+=getInt(s.charAt(i));
+    }
   }
-  return ans;
+  return  ans;
 }
  
       public static void main(String[] args) {

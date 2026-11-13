@@ -88,24 +88,34 @@ public class StringToInt {
         // LET"S REVISE IT AGAIN
         public static int SToI(String str){
           int i=0,sign=1,ans=0;
-          while(i<str.length() && (str.charAt(i)==' ' || str.charAt(i)=='+' || str.charAt(i)=='-')){
-            if(str.charAt(i)=='-')
+          while(i<str.length() && (str.charAt(i)==' ')){
+            i++;
+          }
+                     if(i<str.length() && (str.charAt(i)=='+')){
+              sign=1;
+            i++;
+          }
+            else if(i<str.length() && (str.charAt(i)=='-')){
               sign=-1;
             i++;
           }
           while(i<str.length() && Character.isDigit(str.charAt(i))){
             int digit=str.charAt(i)-'0';
-                        System.out.println("digit: "+digit);
+            System.out.println("digit: "+digit);
+            if(ans>(Integer.MAX_VALUE-digit)/10){
+              return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
             ans=ans*10+digit;
             i++;
           }
-          return ans;
+          return ans*sign;
         }
 
 
         public static void main(String[] args) {
     // int ans=RToI("   -42"); //Ans: 42
-    int ans=SToI("1337c0d3"); //Ans: 1337
+    // int ans=SToI("1337c0d3"); //Ans: 1337
+    int ans=SToI("2147483648"); //Ans: 
     // int ans=RToI("0-1"); //Ans: 0
     // int ans=SToI("  -42e34"); //Ans: 42
 
@@ -340,3 +350,90 @@ public class StringToInt {
 // Also, your current `int ans` implementation does not handle 32-bit overflow. That is the rounding/clamping part we should understand separately.
 
 // The biggest takeaway: You are learning to identify not just a DSA data structure or algorithm, but also a problem-solving pattern. Here, that pattern is controlled, sequential parsing using an index and validation conditions.
+
+
+
+// 
+// 
+// 
+// ## **Integer Overflow Check in String to Integer (atoi)**
+
+// While converting digits into a number, we use:
+
+// ```
+// ans = ans * 10 + digit;
+// ```
+
+// But an integer has a fixed range:
+
+// - `Integer.MAX_VALUE` = `2147483647`
+// - `Integer.MIN_VALUE` = `-2147483648`
+
+// If the number exceeds this range, **integer overflow** occurs.
+
+// ### **How do we check for overflow?**
+
+// Before adding a new digit, check:
+
+// ```
+// if (ans > (Integer.MAX_VALUE - digit) / 10) {
+//     return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+// }
+// ```
+
+// **Why this condition?**
+
+// Our normal operation is:
+
+// \\[ ans \times 10 + digit \\]
+
+// To ensure it doesn't exceed `Integer.MAX_VALUE`:
+
+// \\[ ans \times 10 + digit \leq Integer.MAX\\\_VALUE \\]
+
+// Rearranging:
+
+// \\[ ans \leq \frac{Integer.MAX\\\_VALUE - digit}{10} \\]
+
+// Therefore, if:
+
+// ```
+// ans > (Integer.MAX_VALUE - digit) / 10
+// ```
+
+// overflow will occur.
+
+// ### **Example**
+
+// Suppose:
+
+// ```
+// ans = 214748364;
+// digit = 8;
+// ```
+
+// We want to calculate:
+
+// ```
+// ans = ans * 10 + digit;
+// ```
+
+// But first, check:
+
+// ```
+// 214748364 > (2147483647 - 8) / 10
+// 214748364 > 214748363
+// ```
+
+// Overflow
+
+// So we return `Integer.MAX_VALUE` for a positive number or `Integer.MIN_VALUE` for a negative number.
+
+// **Important:** We use `>` and not `>=` because `2147483647` itself is a valid integer.
+
+// ### **Complexity**
+
+// - **Time Complexity:** O(1) for the overflow check. It uses only arithmetic and comparison.
+// - **Space Complexity:** O(1). No additional data structures are created.
+
+// **Remember:** Always check for overflow *before* performing `ans * 10 + digit`, not after.
